@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=production sls offline start --stage offline",
     "deploy": "cross-env NODE_ENV=production sls deploy --stage prod",
-    "lint": "eslint \"./**/*.{ts,tsx}\" "
+    "lint": "eslint \"./**/*.{ts,tsx}\" ",
+    "remove": "sls remove --stage prod",
+    "tail-log": "sls logs -f forward_email -t --stage prod"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.95",

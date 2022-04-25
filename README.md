@@ -38,11 +38,25 @@ FORWARD_TO=
 
 ## How to deploy
 
+Of course you need and AWS account.
+
+You can also follow the instructions to setup your AWS account with serverless [here](https://www.serverless.com/framework/docs/getting-started)
+
+`npm install`
+
 `npm run deploy`
+
+See the logs : `npm run tail-log`
+
+## How to clean
+
+`npm run remove`
 
 ## How to try locally
 
 Of course for `laposte.net` it works only if you are in france (or use a VPN)
+
+You can also follow the instructions to setup your AWS [here](https://www.serverless.com/framework/docs/getting-started)
 
 `npm run dev`
 
