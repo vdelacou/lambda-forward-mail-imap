@@ -2,7 +2,6 @@ service: lambda-forward-mail-imap
 
 custom:
   stage: ${opt:stage, 'offline'}
-  region: 'eu-west-3'
   webpack:
     webpackConfig: './webpack.config.js'
     packager: 'npm'
@@ -18,10 +17,17 @@ custom:
 
 provider:
   name: aws
+  region: 'eu-west-3'
   runtime: nodejs14.x
   logRetentionInDays: 1
   logs:
     httpApi: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+      Resource: "*"
 
 functions:
   forward_email:
