@@ -26,7 +26,7 @@ const getEmails = async (): Promise<void> => {
               msg.on('body', (stream) => {
                 simpleParser(stream, async (_errorParser, parsed) => {
                   const {
-                    from, subject, textAsHtml, text
+                    from, subject, html, text
                   } = parsed;
                   const params: SendEmailRequest = {
                     Destination: { ToAddresses: [`${process.env.FORWARD_TO}`] },
@@ -34,7 +34,7 @@ const getEmails = async (): Promise<void> => {
                       Body: {
                         Html: {
                           Charset: 'UTF-8',
-                          Data: textAsHtml || 'No data'
+                          Data: html || 'No data'
                         },
                         Text: {
                           Charset: 'UTF-8',
