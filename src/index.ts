@@ -52,13 +52,11 @@ const getEmails = async (): Promise<void> => {
                   const sendPromise = new SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise();
                   await sendPromise.then(
                     (data) => {
-                      resolve();
                       console.log(`email sent ${data.MessageId}`);
                     }
                   ).catch(
                     (sendEmailError: unknown) => {
-                      console.error(sendEmailError, (sendEmailError as AWSError).stack);
-                      reject();
+                      console.error(sendEmailError, (sendEmailError as AWSError).message);
                     }
                   );
                 });
@@ -81,6 +79,7 @@ const getEmails = async (): Promise<void> => {
 
       imap.once('end', () => {
         console.log('Connection ended');
+        resolve();
       });
 
       imap.connect();
